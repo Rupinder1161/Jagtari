@@ -14,3 +14,7 @@
    list-style-type: circle;
    padding: 11px 21px;
 }
+.MuiList-padding{
+  margin-top: 2px !important;
+  background: linear-gradient(to right, #ffb347, #ffcc33);;
+}

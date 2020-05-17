@@ -116,8 +116,8 @@ export class Foodlist extends Component {
                                  {console.log(this.state.Price)}
                                  {g.map(e => e.Price <= this.state.Price?
                                  //<li style={{textStyle:"none",listStyleType:"number"}}>{e.name} from {e.companyName}</li>
-                                   <List className={useStyles.root} >
-                                     <ListItem alignItems="flex-start">
+                                   <List  >
+                                     <ListItem alignItems="flex-start" style={{marginTop:"20px"}}>
                                     <ListItemAvatar>
                                     <Avatar alt="Remy Sharp" src={e.image} />
                                      </ListItemAvatar>
@@ -145,10 +145,6 @@ const style = {
         marginTop:"10vh",
         marginBottom:"10vh",
         borderRadius:'20px',
-    },
-    root:{
-      
-        backgroundImage:"linear-gradient(245deg, rgba(38,51,212,1) 0%, rgb(117, 33, 196) 47%, rgba(38,51,212,1) 100%)",
     },
     inline: {
         display: 'inline',
