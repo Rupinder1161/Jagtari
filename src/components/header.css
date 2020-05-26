@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&display=swap');
+
 .header{
     /* width: 100%; */
     background-color: black;
@@ -216,3 +218,48 @@ body{
     }
 
   }
+
+  .center{
+    width:100%;
+    height: 50vh ;
+    background-color: #FFDB3A;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+/* navbar */
+.Navbar{
+  margin-top: 0px;
+  width:100%;
+  padding: 10px;
+  /* background-color: #FFDB3A; */
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Navbar .sec {
+  display: flex;
+  width:300px;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  color: black;
+  list-style-type: circle;
+  padding: 11px 21px;
+}
+.Navbar .sec a{
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-decoration: none;
+  font-weight: bolder;
+}
+.Navbar .img {
+  font-family: 'Faster One';
+  font-size: 40px;
+  color:deeppink;
+font-weight: bolder;
+  letter-spacing: 2px;
+}
