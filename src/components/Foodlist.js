@@ -1,134 +1,84 @@
 import React, { Component } from 'react'
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-
+import axios from 'axios'
 import '../App.css'
-
-
-const g = [
-    {name:"Burger",companyName:"The Borough", Price: 5,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Pizza",companyName:"Macs Brew Bar", Price: 7,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"lamb burger",companyName:"Chinese burger", Price: 8,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-    {name:"Cool drink",companyName:"The Borough", Price: 10,image:"https://www.thekiwicountrygirl.com/wp-content/uploads/2015/04/Homemade-Burger-Patties-8.jpg"},
-]
-
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      maxWidth: '36ch',
-      backgroundColor: "white",
-    },
-    inline: {
-      display: 'inline',
-    },
-  }));
-
+import Middle from'./Middle'
+import Navbar from './navbar'
+import Footer from './Footer'
 
 export class Foodlist extends Component {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             Price:0
-        }
-    }
-    
-     getPrice = (e) =>{
-            this.setState({
-                Price:e.target.value
-            })
-    }
-     
+           constructor(props) {
+             super(props)
+         
+             this.state = {
+                  fullData:[],
+                  Price:0
+             }
+              this.getFood = this.getFood.bind(this)
+             }
 
+               getFood(){
+                   axios.get('/food/')
+                   .then(response => {
+                       
+                     this.setState({ fullData: response.data })
+                     console.log(response.data )
+                    
+                   })
+                   .catch((error) => {
+                     console.log(error);
+                   })
+                 }
+               
+                 componentDidMount() {
+                  
+                   this.getFood()
+                   // setInterval(this.getFood,5000)
+                  
+                 }
+
+                   componentWillUnmount(){
+                     this.getFood()
+                   }
+                 
+                 
+                   getPrice = (e) =>{
+                     this.setState({
+                         Price:e.target.value
+                     })
+                     console.log(this.state.Price)
+                      }
+                      
+                 
     render() {
    
-        
+      const g = this.state.fullData  
         return (
-                          <div style={style.background}>
-                
-                           <div  style={{width:"100%"}}>
+                    <div >
+                               <div className="center">
+                                    <Navbar/> 
+                                         <FormControl style={style.inputbox} size="small" variant="filled"  variant="outlined">
+                                              <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                                               <OutlinedInput
+                                                          id="outlined-adornment-amount"
+                                                          // defaultValue={0}
+                                                          value={this.state.Price}
+                                                          onChange={this.getPrice}
+                                                          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                                          labelWidth={60}
+                                                          variant="filled"
+                                                          style={{background:"white",}}
+                                                           />
+                                          </FormControl>
                                   
-                           <FormControl style={style.inputbox} size="small" variant="filled" className={useStyles.margin} variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-                                     <OutlinedInput
-                                                id="outlined-adornment-amount"
-                                                // defaultValue={0}
-                                                value={this.state.Pric}
-                                                onChange={this.getPrice}
-                                                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                                                labelWidth={60}
-                                                variant="filled"
-                                                style={{background:"white",}}
-                                                 />
-                                                </FormControl>
-                                  
-                           </div>
-                            <div style={style.root} >
-                                 {console.log(this.state.Price)}
-                                 {g.map(e => e.Price <= this.state.Price?
-                                 //<li style={{textStyle:"none",listStyleType:"number"}}>{e.name} from {e.companyName}</li>
-                                   <List  >
-                                     <ListItem alignItems="flex-start" style={{marginTop:"20px"}}>
-                                    <ListItemAvatar>
-                                    <Avatar alt="Remy Sharp" src={e.image} />
-                                     </ListItemAvatar>
-                                     <ListItemText primary={e.name} secondary={
-                                                    <React.Fragment>
-                                                     <Typography component="span" className={style.inline} variant="body2" color="textPrimary">{e.companyName}</Typography>{" — I'll be in your neighborhood doing errands this…"}
-                                                                                                </React.Fragment>} />
-                                  </ListItem>
-                                  </List> :"")}
-                                     </div>
-                     
+                                 </div>
+                                 <Middle data={this.state.fullData} Price={this.state.Price}/>
+                                 {/* <Footer/> */}
             </div>
         )
     }
@@ -150,7 +100,8 @@ const style = {
         display: 'inline',
       },
     inputbox:{
-        margin:"20px",
+        marginTop:"60px",
+        marginBottom:"60px",
         boxShadow:"0 5px 15px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)"
     }
 }

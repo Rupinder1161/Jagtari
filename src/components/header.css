@@ -221,12 +221,10 @@ body{
 
   .center{
     width:100%;
-    height: 50vh ;
     background-color: #FFDB3A;
     display:flex;
     flex-flow: row wrap;
     justify-content: center;
-    align-items: center;
   }
 
 
@@ -234,8 +232,10 @@ body{
 .Navbar{
   margin-top: 0px;
   width:100%;
+  color: white;
+  text-transform: uppercase;
   padding: 10px;
-  /* background-color: #FFDB3A; */
+  background-color: rgba(0,0,0,0.6);
   display:flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -246,12 +246,11 @@ body{
   width:300px;
   justify-content: space-between;
   flex-flow: row wrap;
-  color: black;
   list-style-type: circle;
   padding: 11px 21px;
 }
 .Navbar .sec a{
-  color: black;
+  color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-decoration: none;
   font-weight: bolder;
